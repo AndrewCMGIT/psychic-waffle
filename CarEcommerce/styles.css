@@ -1,0 +1,924 @@
+/* ===========================
+   Base
+=========================== */
+* { box-sizing: border-box; }
+
+:root{
+  --bg: #0b1220;
+  --panel: rgba(255,255,255,0.06);
+  --panel-2: rgba(255,255,255,0.09);
+  --text: rgba(255,255,255,0.92);
+  --muted: rgba(255,255,255,0.70);
+  --line: rgba(255,255,255,0.12);
+  --shadow: 0 18px 50px rgba(0,0,0,0.35);
+  --radius: 18px;
+  --radius-sm: 12px;
+}
+
+html, body{
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(900px 500px at 15% 10%, rgba(120, 188, 255, 0.20), transparent 60%),
+    radial-gradient(900px 500px at 85% 15%, rgba(170, 120, 255, 0.18), transparent 55%),
+    radial-gradient(900px 500px at 50% 95%, rgba(75, 255, 190, 0.12), transparent 55%),
+    var(--bg);
+}
+
+a { color: inherit; text-decoration: none; }
+a:hover { opacity: 0.92; }
+
+.container{
+  width: min(1150px, calc(100% - 32px));
+  margin: 0 auto;
+}
+
+/* ===========================
+   Header
+=========================== */
+.site-header{
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(10px);
+  background: rgba(10, 16, 28, 0.72);
+  border-bottom: 1px solid var(--line);
+}
+
+.header-inner{
+  width: min(1150px, calc(100% - 32px));
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  gap: 18px;
+}
+
+.brand{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 260px;
+}
+
+.logo{
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  background: linear-gradient(135deg, rgba(120,188,255,0.45), rgba(170,120,255,0.35));
+  border: 1px solid rgba(255,255,255,0.16);
+  box-shadow: var(--shadow);
+}
+
+.brand-text h1{
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.2;
+}
+.brand-text p{
+  margin: 3px 0 0 0;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.nav{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.nav a{
+  font-size: 13px;
+  color: var(--muted);
+  padding: 8px 10px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  transition: 160ms ease;
+}
+
+.nav a:hover{
+  color: var(--text);
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.12);
+}
+
+/* ===========================
+   Hero
+=========================== */
+.hero{
+  margin: 26px 0 18px;
+  display: grid;
+  grid-template-columns: 1.35fr 0.65fr;
+  gap: 16px;
+}
+
+.hero-content,
+.hero-card{
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 18px;
+}
+
+.hero-content h2{
+  margin: 0 0 8px;
+  font-size: 26px;
+  letter-spacing: -0.3px;
+}
+
+.hero-content p{
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.55;
+  max-width: 60ch;
+}
+
+.pill-row{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.pill{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+}
+.pill-label{ color: var(--muted); font-size: 12px; }
+.pill-value{ font-weight: 800; font-size: 14px; }
+
+.hero-card h3{
+  margin: 0 0 8px;
+  font-size: 16px;
+}
+.hero-card ul{
+  margin: 0;
+  padding-left: 18px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* ===========================
+   Panels + Tables
+=========================== */
+.panel{
+  margin: 18px 0;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.panel-head{
+  padding: 16px 18px 10px;
+  border-bottom: 1px solid var(--line);
+  background: rgba(255,255,255,0.03);
+}
+.panel-head h2{
+  margin: 0;
+  font-size: 18px;
+}
+.panel-head p{
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.table-wrap{
+  width: 100%;
+  overflow: auto;
+}
+
+table{
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 860px;
+}
+
+thead th{
+  text-align: left;
+  font-size: 12px;
+  letter-spacing: 0.3px;
+  color: var(--muted);
+  background: rgba(255,255,255,0.04);
+  padding: 12px 12px;
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+}
+
+tbody td{
+  padding: 12px 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  vertical-align: top;
+  font-size: 13px;
+}
+
+tbody tr:hover{
+  background: rgba(255,255,255,0.035);
+}
+
+.right{ text-align: right; }
+.mono{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; }
+.muted{ color: var(--muted); }
+
+/* ===========================
+   Tags / Badges / Status
+=========================== */
+.tag{
+  display: inline-block;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.06);
+}
+
+.tag.petrol{ background: rgba(120,188,255,0.12); }
+.tag.hybrid{ background: rgba(75,255,190,0.10); }
+.tag.diesel{ background: rgba(255,205,120,0.10); }
+
+.badge{
+  display: inline-block;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.06);
+}
+
+.badge.done, .badge.completed{ background: rgba(75,255,190,0.12); }
+.badge.pending{ background: rgba(255,205,120,0.12); }
+.badge.processing{ background: rgba(120,188,255,0.12); }
+
+.status{
+  display: inline-block;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.06);
+}
+
+.status.ok{ background: rgba(75,255,190,0.12); }
+.status.low{ background: rgba(255,120,120,0.12); }
+
+/* ===========================
+   Reviews grid
+=========================== */
+.grid{
+  padding: 16px 18px 18px;
+  display: grid;
+  gap: 14px;
+}
+
+.grid.two{
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.review-card{
+  background: var(--panel-2);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+}
+
+.review-top{
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.review-card h3{
+  margin: 0;
+  font-size: 15px;
+}
+
+.review-card .quote{
+  margin: 10px 0 10px;
+  color: rgba(255,255,255,0.86);
+  line-height: 1.55;
+}
+
+.review-card .meta{
+  margin: 0;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.stars{
+  font-size: 14px;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+/* ===========================
+   Footer
+=========================== */
+.site-footer{
+  margin-top: 22px;
+  border-top: 1px solid var(--line);
+  background: rgba(10, 16, 28, 0.72);
+}
+
+.footer-inner{
+  padding: 18px 0;
+}
+
+.footer-inner p{
+  margin: 0;
+  font-size: 13px;
+}
+.footer-inner .muted{
+  margin-top: 6px;
+  font-size: 12px;
+}
+/* ===========================
+   Form styling ADD REVIEW
+=========================== */
+/* ===========================
+   Form Layout
+=========================== */
+.form-wrapper {
+  padding: 18px;
+  display: flex;
+  justify-content: center;
+}
+
+form {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Form groups */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* Inputs */
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.05);
+  color: var(--text);
+  font-size: 13px;
+  outline: none;
+  transition: 150ms ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: rgba(120,188,255,0.6);
+  background: rgba(255,255,255,0.08);
+}
+
+.form-group textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+/* Button reuse (matches your theme) */
+.btn {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  background: linear-gradient(135deg, rgba(120,188,255,0.35), rgba(170,120,255,0.30));
+  border: 1px solid rgba(255,255,255,0.18);
+  box-shadow: var(--shadow);
+  transition: 160ms ease;
+}
+
+.btn:hover {
+  background: linear-gradient(135deg, rgba(120,188,255,0.55), rgba(170,120,255,0.45));
+}
+
+/* Align panel header content nicely */
+.panel-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.panel-head p {
+  width: 100%;
+}
+/* ===========================
+   Review Page Actions
+=========================== */
+.review-actions {
+  padding: 0 18px 18px;
+  display: flex;
+  justify-content: center;
+}
+/*============================
+   Product Grid 
+=========================== */
+.product-grid {
+  padding: 18px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+.car-card {
+  background: var(--panel-2);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: var(--radius);
+  padding: 16px;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition: 180ms ease;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 380px;
+  position: relative;
+}
+.car-card:hover {
+  transform: translateY(-4px);
+  background: rgba(255,255,255,0.08);
+}
+.car-image {
+  width: 100%;
+  aspect-ratio: 16 / 10; /* Keeps images same size on all screen types */
+  overflow: hidden;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.05);
+}
+.car-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 220ms ease;
+}
+.car-card:hover .car-image img {
+  transform: scale(1.04);
+}
+.car-card h3 {
+  margin: 0;
+  font-size: 18px;
+  letter-spacing: -0.2px;
+}
+.price {
+  font-weight: 800;
+  font-size: 20px;
+  letter-spacing: -0.2px;
+}
+.car-specs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.stock-pill {
+  display: inline-block;
+  width: fit-content;
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: rgba(75,255,190,0.10);
+  border: 1px solid rgba(75,255,190,0.18);
+}
+.stock-pill.low {
+  background: rgba(255,120,120,0.12);
+  border-color: rgba(255,120,120,0.22);
+}
+.car-card .btn {
+  margin-top: auto;
+}
+.btn {
+  display: inline-block;
+  text-align: center;
+}
+
+/* ===========================
+   Car Detail Page Layout
+=========================== */
+
+
+.car-detail-layout {
+  display: grid;
+  grid-template-columns: 1.25fr 0.85fr;
+  gap: 22px;
+  padding: 22px;
+  align-items: start;
+}
+
+.car-image-large {
+  min-height: 360px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: var(--radius);
+  padding: 22px;
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.car-image-large img {
+  width: 100%;
+  max-height: 320px;
+  object-fit: contain;
+  border-radius: 14px;
+}
+
+.car-info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.car-info .review-card {
+  padding: 18px;
+}
+
+.car-info .review-card h3 {
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+.car-info .review-card p {
+  margin: 9px 0;
+  color: var(--muted);
+}
+
+.car-info .review-card strong {
+  color: var(--text);
+}
+
+.car-price {
+  font-size: 30px;
+  font-weight: 850;
+  margin: 10px 0 4px;
+  letter-spacing: -0.4px;
+}
+
+.button-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.button-row .btn {
+  width: 100%;
+}
+
+/* ===========================
+   Basket Page
+=========================== */
+
+.basket-spacing {
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 24px;
+  align-items: start;
+}
+
+.basket-body {
+  padding: 18px;
+  display: grid;
+  gap: 16px;
+}
+
+.basket-container {
+  display: grid;
+  gap: 14px;
+}
+
+.basket-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  padding: 18px;
+  border-radius: var(--radius);
+  background: var(--panel-2);
+  border: 1px solid rgba(255,255,255,0.10);
+  transition: 150ms ease;
+}
+
+.basket-item:hover {
+  transform: translateY(-2px);
+  background: rgba(255,255,255,0.08);
+}
+
+.basket-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.basket-title {
+  font-weight: 750;
+  font-size: 15px;
+}
+
+.basket-price {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.remove-btn {
+  padding: 7px 13px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 650;
+  color: rgba(255,255,255,0.95);
+  background: rgba(255, 80, 80, 0.12);
+  border: 1px solid rgba(255, 80, 80, 0.25);
+  cursor: pointer;
+  transition: 150ms ease;
+  white-space: nowrap;
+}
+
+.remove-btn:hover {
+  background: rgba(255, 80, 80, 0.25);
+}
+
+.basket-summary {
+  position: sticky;
+  top: 90px;
+  padding: 18px;
+  border-radius: var(--radius);
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.16);
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  box-shadow: var(--shadow);
+}
+
+.basket-summary h3 {
+  margin: 0;
+  font-size: 17px;
+}
+
+.basket-summary .btn {
+  width: 100%;
+}
+
+.total-price {
+  font-size: 22px;
+  font-weight: 850;
+}
+
+.empty-basket {
+  text-align: center;
+  color: var(--muted);
+  padding: 30px;
+  border: 1px dashed rgba(255,255,255,0.2);
+  border-radius: var(--radius);
+  background: rgba(255,255,255,0.03);
+}
+
+.basket-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+#basket-count {
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 999px;
+  display: inline-grid;
+  place-items: center;
+  font-size: 12px;
+  font-weight: 800;
+  background: rgba(120,188,255,0.24);
+  border: 1px solid rgba(120,188,255,0.35);
+}
+
+/* ===========================
+   Admin Search + Actions
+=========================== */
+
+.search-form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  max-width: none;
+}
+
+.search-form input {
+  min-width: 240px;
+  padding: 9px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.05);
+  color: var(--text);
+  outline: none;
+}
+
+.search-form input:focus {
+  border-color: rgba(120,188,255,0.6);
+  background: rgba(255,255,255,0.08);
+}
+
+.btn.secondary {
+  background: rgba(255,255,255,0.08);
+}
+
+.danger-btn {
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.95);
+  background: rgba(255, 80, 80, 0.14);
+  border: 1px solid rgba(255, 80, 80, 0.3);
+  cursor: pointer;
+}
+
+.danger-btn:hover {
+  background: rgba(255, 80, 80, 0.28);
+}
+
+
+
+/* ===========================
+   Responsive
+=========================== */
+@media (max-width: 900px){
+  .header-inner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .brand {
+    min-width: 260px;
+    flex-shrink: 0;
+  }
+  .nav {
+    width: auto;
+    justify-content: flex-end;
+    margin-left: auto;
+  }
+  .hero,
+  .car-detail-layout,
+  .basket-spacing {
+    grid-template-columns: 1fr;
+  }
+  .grid.two {
+    grid-template-columns: 1fr;
+  }
+  .panel-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .basket-summary {
+    position: static;
+  }
+  table {
+    min-width: 780px;
+  }  
+  .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* ===========================
+      Basket
+  =========================== */
+
+  .basket-spacing {
+    grid-template-columns: 1fr;
+  }
+  .basket-summary {
+    position: static;
+  }
+}
+
+@media (max-width: 600px) {
+  .container,
+  .header-inner {
+    width: min(100% - 20px, 1150px);
+  }
+
+  .brand-text h1 {
+    font-size: 14px;
+  }
+
+  .brand-text p {
+    font-size: 11px;
+  }
+
+  .logo {
+    width: 38px;
+    height: 38px;
+  }
+
+  .nav {
+    gap: 6px;
+  }
+
+  .nav a {
+    font-size: 12px;
+    padding: 7px 9px;
+  }
+
+  .hero {
+    margin-top: 16px;
+  }
+
+  .hero-content h2 {
+    font-size: 22px;
+  }
+
+  .hero-content,
+  .hero-card,
+  .panel-head {
+    padding: 14px;
+  }
+
+  .product-grid {
+    padding: 14px;
+    grid-template-columns: 1fr;
+  }
+
+  .car-card {
+    min-height: auto;
+  }
+
+  .car-image {
+    aspect-ratio: 16 / 9;
+  }
+
+  .pill-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .pill {
+    justify-content: space-between;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  /* ===========================
+      Basket
+  =========================== */
+
+  .basket-spacing {
+    padding: 14px;
+    gap: 14px;
+  }
+}
+.form-group select {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.05);
+  color: var(--text);
+  font-size: 13px;
+  outline: none;
+}
+
+/* Force override if needed */
+.form-group select {
+  background: rgba(255,255,255,0.05) !important;
+  color: var(--text) !important;
+}
